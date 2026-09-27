@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Habit Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Habit Tracker</h1>
+        <p>Build better habits, one day at a time.</p>
+    </header>
+
+
+    <main>
+
+        <!-- Add Habit -->
+        <section class="add-section">
+
+            <h2>Add New Habit</h2>
+
+            <form id="habitForm">
+
+                <div>
+                    <label for="habitInput">Habit Name: </label>
+
+                    <input
+                        type="text"
+                        id="habitInput"
+                        placeholder="Example: Drink water"
+                    >
+                </div>
+                <br>
+
+                <div>
+                    <label for="frequency">Frequency: </label>
+
+                    <select id="frequency">
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                    </select>
+                </div>
+                <br>
+
+                <button type="submit">
+                    Add Habit
+                </button>
+                <br>
+
+            </form>
+            <br>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="tools">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Search habits..."
+            >
+            <br><br>
+
+            <select id="filter">
+
+                <option value="all">All Habits</option>
+
+                <option value="completed">
+                    Completed
+                </option>
+
+                <option value="pending">
+                    Pending
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- Progress -->
+        <section class="progress-section">
+
+            <h2>Today's Progress</h2>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+            <p id="progressText">
+                0 of 0 completed
+            </p>
+
+        </section>
+
+
+        <!-- Habits -->
+        <section class="habit-section">
+
+            <h2>My Habits</h2>
+
+            <div id="habitList"></div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
