@@ -1,122 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Habit Tracker</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Habit Tracker</h1>
-        <p>Build better habits, one day at a time.</p>
-    </header>
+  <!-- Top of the page -->
+  <header>
+    <h1>Habit Tracker</h1>
+    <p id="todayDate"></p>
+  </header>
 
+  <main>
 
-    <main>
+    <!-- Progress section -->
+    <section class="card" id="progressSection">
+      <h2>Today's Progress</h2>
+      <p id="progressText">0 of 0 habits done</p>
+      <div class="bar">
+        <div class="bar-fill" id="progressFill"></div>
+      </div>
+    </section>
 
-        <!-- Add Habit -->
-        <section class="add-section">
+    <!-- Form to add / edit a habit -->
+    <section class="card">
+      <h2 id="formTitle">Add Habit</h2>
 
-            <h2>Add New Habit</h2>
+      <form id="habitForm">
+        <label for="habitName">Habit name</label>
+        <input type="text" id="habitName" placeholder="e.g. Drink water">
 
-            <form id="habitForm">
+        <label for="habitCategory">Category</label>
+        <select id="habitCategory">
+          <option value="">-- Select category --</option>
+          <option value="Health">Health</option>
+          <option value="Study">Study</option>
+          <option value="Fitness">Fitness</option>
+          <option value="Other">Other</option>
+        </select>
 
-                <div>
-                    <label for="habitInput">Habit Name: </label>
+        <p id="errorMessage"></p>
 
-                    <input
-                        type="text"
-                        id="habitInput"
-                        placeholder="Example: Drink water"
-                    >
-                </div>
-                <br>
+        <button type="submit" id="saveButton">Add Habit</button>
+        <button type="button" id="cancelButton" class="grey" hidden>Cancel</button>
+      </form>
+    </section>
 
-                <div>
-                    <label for="frequency">Frequency: </label>
+    <!-- Search and filter -->
+    <section class="card">
+      <h2>Search &amp; Filter</h2>
+      <div class="filters">
+        <div>
+          <label for="searchInput">Search</label>
+          <input type="text" id="searchInput" placeholder="Search habits...">
+        </div>
+        <div>
+          <label for="statusFilter">Status</label>
+          <select id="statusFilter">
+            <option value="all">All</option>
+            <option value="done">Done today</option>
+            <option value="notdone">Not done today</option>
+          </select>
+        </div>
+        <div>
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="all">All</option>
+            <option value="Health">Health</option>
+            <option value="Study">Study</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+    </section>
 
-                    <select id="frequency">
-                        <option value="Daily">Daily</option>
-                        <option value="Weekly">Weekly</option>
-                    </select>
-                </div>
-                <br>
+    <!-- List of habits -->
+    <section>
+      <h2>My Habits</h2>
+      <p id="emptyMessage"></p>
+      <ul id="habitList"></ul>
+    </section>
 
-                <button type="submit">
-                    Add Habit
-                </button>
-                <br>
+  </main>
 
-            </form>
-            <br>
-
-        </section>
-
-
-        <!-- Search and Filter -->
-        <section class="tools">
-
-            <input
-                type="text"
-                id="search"
-                placeholder="🔍 Search habits..."
-            >
-            <br><br>
-
-            <select id="filter">
-
-                <option value="all">All Habits</option>
-
-                <option value="completed">
-                    Completed
-                </option>
-
-                <option value="pending">
-                    Pending
-                </option>
-
-            </select>
-
-        </section>
-
-
-        <!-- Progress -->
-        <section class="progress-section">
-
-            <h2>Today's Progress</h2>
-
-            <div class="progress-bar">
-                <div id="progressFill"></div>
-            </div>
-
-            <p id="progressText">
-                0 of 0 completed
-            </p>
-
-        </section>
-
-
-        <!-- Habits -->
-        <section class="habit-section">
-
-            <h2>My Habits</h2>
-
-            <div id="habitList"></div>
-
-        </section>
-
-    </main>
-
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
