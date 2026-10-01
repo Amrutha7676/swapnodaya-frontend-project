@@ -1,193 +1,705 @@
-/* ---------- Basic setup ---------- */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f0f2f8;
-  margin: 0;
-  color: #222;
+    font-family: Arial, sans-serif;
+    background: #f1f3f9;
+    color: #252b3a;
+    min-height: 100vh;
 }
+
+
+/* ================= HEADER ================= */
 
 header {
-  background: #4f46e5;
-  color: white;
-  text-align: center;
-  padding: 20px;
+    background: linear-gradient(120deg, #4d3eea, #7534e8);
+    color: white;
+    padding: 28px 0;
 }
+
+
+.header-content {
+    width: 84%;
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
 
 header p {
-  margin: 5px 0 0;
+    font-size: 15px;
+    opacity: 0.9;
 }
 
-/* ---------- Main layout (CSS Grid) ---------- */
-/* 2 columns on desktop */
+
+.dark-btn {
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+
+    padding: 12px 18px;
+    border-radius: 7px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.dark-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+
+/* ================= MAIN ================= */
+
 main {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 0 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+    width: 84%;
+    max-width: 1100px;
+    margin: 18px auto;
 }
 
-/* The habit list and progress use the full width */
-#progressSection,
-main > section:last-child {
-  grid-column: 1 / -1;
+
+section {
+    background: white;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
 }
 
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
 
 h2 {
-  margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 16px;
 }
 
-/* ---------- Form ---------- */
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
+
+/* ================= PROGRESS ================= */
+
+.progress-section {
+    margin-bottom: 18px;
 }
+
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+
+.stat-box {
+    background: #f1f2f7;
+    border-radius: 8px;
+
+    text-align: center;
+    padding: 14px;
+}
+
+
+.stat-box strong {
+    display: block;
+
+    color: #5140d9;
+    font-size: 25px;
+
+    margin-bottom: 5px;
+}
+
+
+.stat-box span {
+    font-size: 13px;
+    color: #6d7180;
+}
+
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+
+    background: #dce0e9;
+
+    border-radius: 10px;
+
+    margin-top: 14px;
+
+    overflow: hidden;
+}
+
+
+#todayProgress {
+    height: 100%;
+    width: 0%;
+
+    background: linear-gradient(
+        90deg,
+        #5140d9,
+        #17a568
+    );
+
+    transition: width 0.3s;
+}
+
+
+#progressText {
+    font-size: 13px;
+    color: #6d7180;
+    margin-top: 9px;
+}
+
+
+/* ================= MAIN GRID ================= */
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 18px;
+}
+
+
+/* ================= FORM ================= */
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+
+    margin-bottom: 7px;
+}
+
 
 input,
 select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+    width: 100%;
+
+    height: 40px;
+
+    border: 1px solid #d6d8df;
+    border-radius: 7px;
+
+    padding: 0 10px;
+
+    font-size: 14px;
+
+    background: white;
 }
 
-/* Focus state: when the user clicks inside a field */
+
 input:focus,
 select:focus {
-  outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+    outline: none;
+    border-color: #5140d9;
 }
 
-#errorMessage {
-  color: red;
-  min-height: 20px;
+
+.add-section label {
+    margin-top: 14px;
 }
 
-button {
-  background: #4f46e5;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
+
+.add-btn {
+    width: 105px;
+
+    border: none;
+    background: #4c3ed5;
+    color: white;
+
+    padding: 11px 12px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 25px;
 }
 
-/* Hover state: when the mouse is over the button */
-button:hover {
-  background: #3730a3;
+
+.add-btn:hover {
+    background: #3f32bd;
 }
 
-button.grey {
-  background: #888;
-}
 
-button.grey:hover {
-  background: #666;
-}
+/* ================= FILTERS ================= */
 
-button.red {
-  background: #dc2626;
-}
-
-button.red:hover {
-  background: #b91c1c;
-}
-
-/* ---------- Filters (Flexbox) ---------- */
 .filters {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 0.8fr 0.9fr;
+    gap: 10px;
 }
 
-/* ---------- Progress bar ---------- */
-.bar {
-  background: #ddd;
-  height: 16px;
-  border-radius: 8px;
-  overflow: hidden;
+
+.filters label {
+    margin-bottom: 7px;
 }
 
-.bar-fill {
-  background: #16a34a;
-  height: 100%;
-  width: 0%;
-  transition: width 0.3s;
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 6px 0 10px;
 }
 
-/* ---------- Habit list ---------- */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+#habitCount {
+    color: #707583;
+    font-size: 13px;
 }
 
-/* Each habit is a flex row */
-.habit {
-  background: white;
-  border-left: 6px solid orange;   /* orange = not done */
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+
+.tool-btn {
+    border: none;
+
+    background: #e5e8ef;
+    color: #303542;
+
+    padding: 7px 12px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-left: 5px;
 }
 
-/* Green = done today */
-.habit.done {
-  border-left-color: #16a34a;
-  background: #f0fdf4;
+
+.tool-btn:hover {
+    background: #d8dce5;
 }
 
-.habit.done .habit-name {
-  text-decoration: line-through;
-  color: #666;
+
+/* ================= HABIT CARD ================= */
+
+.habit-card {
+    border: 1px solid #dfe2e8;
+
+    border-left: 5px solid #e18b00;
+
+    border-radius: 9px;
+
+    padding: 13px;
+
+    margin-bottom: 10px;
+
+    background: white;
 }
 
-.habit-name {
-  font-weight: bold;
-  font-size: 18px;
+
+.habit-card.completed {
+    background: #e9f8ef;
 }
 
-.habit-info p {
-  margin: 4px 0 0;
-  color: #555;
-  font-size: 14px;
+
+.habit-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.buttons {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+
+.check-btn {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border: 2px solid #d8dbe1;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
 }
 
-/* ---------- Mobile layout ---------- */
-@media (max-width: 700px) {
-  main {
-    grid-template-columns: 1fr;   /* 1 column */
-  }
 
-  .habit {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.check-btn.done {
+    background: #18a957;
+    border-color: #18a957;
+    color: white;
+}
+
+
+.habit-info {
+    flex: 1;
+}
+
+
+.habit-info h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+
+.badge {
+    background: #eef0f4;
+    color: #6a7080;
+
+    padding: 4px 7px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+.streak-badge {
+    background: #fff0bd;
+    color: #dc8b00;
+}
+
+
+.status-badge {
+    background: #e2f6e8;
+    color: #15934d;
+}
+
+
+.notdone-badge {
+    background: #fff0bd;
+    color: #e29800;
+}
+
+
+.card-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+
+.edit-btn,
+.delete-btn {
+    border: none;
+
+    padding: 8px 11px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.edit-btn {
+    background: #e4e7ed;
+    color: #343944;
+}
+
+
+.delete-btn {
+    background: #ffe1e4;
+    color: #e5394f;
+}
+
+
+.edit-btn:hover {
+    background: #d7dbe3;
+}
+
+
+.delete-btn:hover {
+    background: #ffd0d5;
+}
+
+
+/* ================= WEEK ================= */
+
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 5px;
+
+    margin-top: 10px;
+}
+
+
+.day {
+    min-height: 40px;
+
+    border: 1px solid #e1e3e8;
+
+    border-radius: 5px;
+
+    text-align: center;
+
+    padding: 6px 2px;
+
+    font-size: 11px;
+
+    color: #666c78;
+
+    cursor: pointer;
+}
+
+
+.day:hover {
+    border-color: #5140d9;
+}
+
+
+.day.today {
+    border: 2px solid #5140d9;
+}
+
+
+.day.completed {
+    background: #dff5e7;
+    color: #148d4b;
+    font-weight: bold;
+}
+
+
+.week-progress {
+    height: 7px;
+
+    background: #e1e4ea;
+
+    border-radius: 10px;
+
+    margin-top: 8px;
+
+    overflow: hidden;
+}
+
+
+.week-progress-fill {
+    height: 100%;
+    background: #5140d9;
+}
+
+
+.week-info {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 11px;
+
+    color: #707583;
+
+    margin-top: 5px;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty {
+    text-align: center;
+
+    padding: 35px 10px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* ================= TOAST ================= */
+
+.toast {
+    position: fixed;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #252b3a;
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+}
+
+
+.toast.show {
+    opacity: 1;
+}
+
+
+/* ================= DARK MODE ================= */
+
+body.dark {
+    background: #171923;
+    color: #f1f1f1;
+}
+
+
+body.dark section {
+    background: #20232e;
+}
+
+
+body.dark .stat-box {
+    background: #292d3a;
+}
+
+
+body.dark .stat-box span,
+body.dark #progressText,
+body.dark #habitCount {
+    color: #b9bdc9;
+}
+
+
+body.dark input,
+body.dark select {
+    background: #292d3a;
+    color: white;
+    border-color: #444957;
+}
+
+
+body.dark .habit-card {
+    background: #242833;
+    border-color: #414552;
+}
+
+
+body.dark .habit-card.completed {
+    background: #21372a;
+}
+
+
+body.dark .day {
+    border-color: #444957;
+    color: #bfc2cc;
+}
+
+
+body.dark .day.completed {
+    background: #294b36;
+}
+
+
+body.dark .tool-btn,
+body.dark .edit-btn {
+    background: #343947;
+    color: white;
+}
+
+
+body.dark .badge {
+    background: #343947;
+    color: #c5c8d2;
+}
+
+
+body.dark .check-btn {
+    background: #20232e;
+    border-color: #555a68;
+}
+
+
+body.dark .check-btn.done {
+    background: #18a957;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    main,
+    .header-content {
+        width: 94%;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 0;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .habit-top {
+        align-items: flex-start;
+    }
+
+    .card-buttons {
+        flex-direction: column;
+    }
+
+    .week {
+        gap: 3px;
+    }
+
+    .day {
+        font-size: 9px;
+    }
+
+    .tools {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
+    }
 }

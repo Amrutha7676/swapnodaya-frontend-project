@@ -1,92 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Habit Tracker</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Habit Tracker Pro</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <!-- Top of the page -->
-  <header>
-    <h1>Habit Tracker</h1>
-    <p id="todayDate"></p>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>Habit Tracker Pro</h1>
+                <p id="currentDate"></p>
+            </div>
 
-  <main>
-
-    <!-- Progress section -->
-    <section class="card" id="progressSection">
-      <h2>Today's Progress</h2>
-      <p id="progressText">0 of 0 habits done</p>
-      <div class="bar">
-        <div class="bar-fill" id="progressFill"></div>
-      </div>
-    </section>
-
-    <!-- Form to add / edit a habit -->
-    <section class="card">
-      <h2 id="formTitle">Add Habit</h2>
-
-      <form id="habitForm">
-        <label for="habitName">Habit name</label>
-        <input type="text" id="habitName" placeholder="e.g. Drink water">
-
-        <label for="habitCategory">Category</label>
-        <select id="habitCategory">
-          <option value="">-- Select category --</option>
-          <option value="Health">Health</option>
-          <option value="Study">Study</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <p id="errorMessage"></p>
-
-        <button type="submit" id="saveButton">Add Habit</button>
-        <button type="button" id="cancelButton" class="grey" hidden>Cancel</button>
-      </form>
-    </section>
-
-    <!-- Search and filter -->
-    <section class="card">
-      <h2>Search &amp; Filter</h2>
-      <div class="filters">
-        <div>
-          <label for="searchInput">Search</label>
-          <input type="text" id="searchInput" placeholder="Search habits...">
+            <button id="darkModeBtn" class="dark-btn">
+                Dark mode
+            </button>
         </div>
-        <div>
-          <label for="statusFilter">Status</label>
-          <select id="statusFilter">
-            <option value="all">All</option>
-            <option value="done">Done today</option>
-            <option value="notdone">Not done today</option>
-          </select>
+    </header>
+
+
+    <main>
+
+        <!-- Today's Progress -->
+        <section class="progress-section">
+
+            <h2>Today's Progress</h2>
+
+            <div class="stats">
+
+                <div class="stat-box">
+                    <strong id="totalHabits">0</strong>
+                    <span>Total habits</span>
+                </div>
+
+                <div class="stat-box">
+                    <strong id="doneToday">0</strong>
+                    <span>Done today</span>
+                </div>
+
+                <div class="stat-box">
+                    <strong id="topStreak">0</strong>
+                    <span>Top current streak</span>
+                </div>
+
+                <div class="stat-box">
+                    <strong id="sevenDayCompletion">0%</strong>
+                    <span>7-day completion</span>
+                </div>
+
+            </div>
+
+            <div class="progress-bar">
+                <div id="todayProgress"></div>
+            </div>
+
+            <p id="progressText">0 of 0 habits done (0%)</p>
+
+        </section>
+
+
+        <!-- Main Area -->
+        <div class="main-grid">
+
+            <!-- Add Habit -->
+            <section class="add-section">
+
+                <h2>Add Habit</h2>
+
+                <form id="habitForm">
+
+                    <label for="habitName">Habit name</label>
+
+                    <input
+                        type="text"
+                        id="habitName"
+                        placeholder="e.g. Read 10 pages"
+                    >
+
+
+                    <label for="category">Category</label>
+
+                    <select id="category">
+                        <option value="">-- Select category --</option>
+                        <option value="Study">Study</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Health">Health</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+
+
+                    <label for="priority">Priority</label>
+
+                    <select id="priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                    </select>
+
+
+                    <label for="weeklyGoal">Weekly goal</label>
+
+                    <select id="weeklyGoal">
+                        <option value="7">7 days a week</option>
+                        <option value="6">6 days a week</option>
+                        <option value="5">5 days a week</option>
+                        <option value="4">4 days a week</option>
+                        <option value="3">3 days a week</option>
+                        <option value="2">2 days a week</option>
+                        <option value="1">1 day a week</option>
+                    </select>
+
+
+                    <button type="submit" class="add-btn">
+                        Add Habit
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- Habits -->
+            <section class="habits-section">
+
+                <h2>My Habits</h2>
+
+                <!-- Filters -->
+                <div class="filters">
+
+                    <div>
+                        <label for="search">Search</label>
+
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder="Search habits..."
+                        >
+                    </div>
+
+
+                    <div>
+                        <label for="statusFilter">Status</label>
+
+                        <select id="statusFilter">
+                            <option value="all">All</option>
+                            <option value="done">Done today</option>
+                            <option value="notdone">Not done</option>
+                        </select>
+                    </div>
+
+
+                    <div>
+                        <label for="categoryFilter">Category</label>
+
+                        <select id="categoryFilter">
+                            <option value="all">All</option>
+                            <option value="Study">Study</option>
+                            <option value="Fitness">Fitness</option>
+                            <option value="Health">Health</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+
+
+                    <div>
+                        <label for="sortBy">Sort by</label>
+
+                        <select id="sortBy">
+                            <option value="newest">Newest first</option>
+                            <option value="oldest">Oldest first</option>
+                            <option value="name">Name</option>
+                            <option value="streak">Streak</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <!-- Export / Import -->
+                <div class="tools">
+
+                    <span id="habitCount">
+                        Showing 0 of 0 habit(s)
+                    </span>
+
+                    <div>
+                        <button id="exportBtn" class="tool-btn">
+                            Export
+                        </button>
+
+                        <button id="importBtn" class="tool-btn">
+                            Import
+                        </button>
+
+                        <input
+                            type="file"
+                            id="importFile"
+                            accept=".json"
+                            hidden
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- Habit List -->
+                <div id="habitList"></div>
+
+            </section>
+
         </div>
-        <div>
-          <label for="categoryFilter">Category</label>
-          <select id="categoryFilter">
-            <option value="all">All</option>
-            <option value="Health">Health</option>
-            <option value="Study">Study</option>
-            <option value="Fitness">Fitness</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-      </div>
-    </section>
 
-    <!-- List of habits -->
-    <section>
-      <h2>My Habits</h2>
-      <p id="emptyMessage"></p>
-      <ul id="habitList"></ul>
-    </section>
+    </main>
 
-  </main>
 
-  <script src="script.js"></script>
+    <!-- Toast message -->
+    <div id="toast" class="toast">
+        Habit added
+    </div>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
